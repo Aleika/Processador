@@ -243,6 +243,23 @@ public:
     }
 
     void divX(){
+        int mar = converterBinarioDecimal(MAR, 16);
+        vector<string> inst = memoria[mar];
+        
+        if(MBR.size() == 1){
+            MBR.pop_back();
+        }
+        //MBR <- MEMORIA[MAR]
+        MBR.push_back(inst[0]);
+        
+        //AC,MQ <- AC/MBR
+        if(AC.size() == 1){
+            AC.pop_back();
+        }
+
+        AC.push_back(AC[0]%MBR[0]);
+        MQ.push_back(MQ[0]/MBR[0]);
+        
     }
 
 };
