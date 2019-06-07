@@ -130,9 +130,11 @@ public:
         return soma;
     }
     
-    vector<char> converterDecimalBinarioString(int n){
-        char temp[16] = {0};
-        for(int i =15;i>=0;i--){
+    vector<string> converterDecimalBinarioString(int n, int nBits){
+        char temp[] = {0};
+        vector<string> BIN;
+
+        for(int i =(nBits-1);i>=0;i--){
             if(n%2==0){
                 temp[i]='0';
                 n=n/2;
@@ -143,11 +145,9 @@ public:
         }
 
         string s = temp;
-        std::vector<char> bin(s.begin(), s.end()); //converte de string para vector<char>
+        BIN.push_back(s);
         
-        //obs: uma variavel vector<string> pode receber um valor string<char> sem erros
-
-        return bin;
+        return BIN;
     }
     
 
@@ -266,28 +266,36 @@ public:
         }
         //MBR <- MEMORIA[MAR]
         MBR.push_back(inst[0]);
-        
-        
-        vector<string> reg_temp;
+
+
+         vector<string> reg_temp;
 
         if(reg_temp.size() == 1){
             reg_temp.pop_back();
         }
+
+        int mq = converterBinarioDecimal(MQ,16);
+        int mbr = converterBinarioDecimal(MBR,16);
+        //Realiza a operacao em decimal:
+        int mult = mq*mbr;
+        //converte o resultado pra binario:
+        vector<string> MULT = converterDecimalBinarioString(mult,32);
+
         //RT <- MQ*MBR
-        reg_temp.push_back(MQ[0]*MBR[0]);
-        
+        reg_temp.push_back(MULT[0]);
+
         if(AC.size() == 1){
             AC.pop_back();
         }
-        
+
         for(int i = 0; i <= 31; i++){
             if(i >= 0 && i <= 15 ){
                 MQ.push_back(reg_temp[i]); //Armazena os bits menos significativos em MQ
             } else {
-                AC.push_back(reg_temp[i]); ////Armazena os bits mais significativos em AC
+                AC.push_back(reg_temp[i]); //Armazena os bits mais significativos em AC
             }
         }
-        
+
     }
 
     void divX(){
