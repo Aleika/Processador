@@ -129,33 +129,25 @@ public:
         }
         return soma;
     }
-    void converterDecimalBinarioString(int n){
-        int temp[10];
-        vector<string> bin;
-        int aux;
-        
-        for(aux=10;aux>=0;aux--){
+    
+    vector<char> converterDecimalBinarioString(int n){
+        char temp[16] = {0};
+        for(int i =15;i>=0;i--){
             if(n%2==0){
-                temp[aux]=0;
+                temp[i]='0';
                 n=n/2;
             }else{
-                temp[aux]=1;
+                temp[i]='1';
                 n=n/2;
             }
         }
+
+        string s = temp;
+        std::vector<char> bin(s.begin(), s.end()); //converte de string para vector<char>
         
-        string returnstring = "";
-        for (int temp = 0; temp < tem.sizeof(temp); temp++){
-            returnstring += itoa(int_array[temp]);//itoa converte int em string.
-       }
-       
-       int zeros = 16 - strlen(returnstring);
-       for(int i=0;i<zeros;i++){
-           returnstring+="0";
-       }
-        
-       bin.push_back(returnstring);
-        
+        //obs: uma variavel vector<string> pode receber um valor string<char> sem erros
+
+        return bin;
     }
     
 
