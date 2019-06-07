@@ -129,6 +129,25 @@ public:
         }
         return soma;
     }
+    void converterDecimalBinarioString(int n){
+        int temp[10];
+        vector<string> bin;
+        int aux;
+        
+        for(aux=10;aux>=0;aux--){
+            if(n%2==0){
+                temp[aux]=0;
+                n=n/2;
+            }else{
+                temp[aux]=1;
+                n=n/2;
+            }
+        }
+        for(aux=0;aux<=10;aux++){
+           bin.push_back(temp[aux]);
+        }
+        
+    }
     
 
     // Conjunto de instruções
