@@ -143,9 +143,18 @@ public:
                 n=n/2;
             }
         }
-        for(aux=0;aux<=10;aux++){
-           bin.push_back(temp[aux]);
-        }
+        
+        string returnstring = "";
+        for (int temp = 0; temp < tem.sizeof(temp); temp++){
+            returnstring += itoa(int_array[temp]);//itoa converte int em string.
+       }
+       
+       int zeros = 16 - strlen(returnstring);
+       for(int i=0;i<zeros;i++){
+           returnstring+="0";
+       }
+        
+       bin.push_back(returnstring);
         
     }
     
