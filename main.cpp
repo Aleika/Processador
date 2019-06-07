@@ -260,6 +260,34 @@ public:
 
         int mar = converterBinarioDecimal(MAR, 16);
         vector<string> inst = memoria[mar];
+
+        if(MBR.size() == 1){
+            MBR.pop_back();
+        }
+        //MBR <- MEMORIA[MAR]
+        MBR.push_back(inst[0]);
+        
+        
+        vector<string> reg_temp;
+
+        if(reg_temp.size() == 1){
+            reg_temp.pop_back();
+        }
+        //RT <- MQ*MBR
+        reg_temp.push_back(MQ[0]*MBR[0]);
+        
+        if(AC.size() == 1){
+            AC.pop_back();
+        }
+        
+        for(int i = 0; i <= 31; i++){
+            if(i >= 0 && i <= 15 ){
+                MQ.push_back(reg_temp[i]); //Armazena os bits menos significativos em MQ
+            } else {
+                AC.push_back(reg_temp[i]); ////Armazena os bits mais significativos em AC
+            }
+        }
+        
     }
 
     void divX(){
