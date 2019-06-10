@@ -427,8 +427,7 @@ public:
 
 };
 
-int main()
-{
+int main() {
 
     // --------------------- Inserindo as instruções na memória ------------------------
         //LOAD MQ, 22
